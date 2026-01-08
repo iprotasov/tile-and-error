@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://duw50or1bnuh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujlyf"]
+
+[node name="FallingTile" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ujlyf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

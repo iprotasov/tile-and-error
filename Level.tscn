@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctoxxa5p6w2gt"]
+
+[ext_resource type="PackedScene" uid="uid://c5br1siyspq7r" path="res://Player.tscn" id="1_t7iv1"]
+[ext_resource type="PackedScene" uid="uid://duw50or1bnuh3" path="res://FallingTile.tscn" id="2_2nifc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7iv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nifc"]
+
+[node name="Level" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Floor" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+
+[node name="Walls" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+
+[node name="Exit" type="Area2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Exit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+shape = SubResource("RectangleShape2D_t7iv1")
+
+[node name="Key" type="Area2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Key"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
+shape = SubResource("RectangleShape2D_2nifc")
+
+[node name="Player" parent="." instance=ExtResource("1_t7iv1")]
+y_sort_enabled = true
+
+[node name="FallingTiles" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="FallingTile" parent="FallingTiles" instance=ExtResource("2_2nifc")]
