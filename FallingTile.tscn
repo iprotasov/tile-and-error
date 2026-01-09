@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://duw50or1bnuh3"]
+[gd_scene load_steps=4 format=3 uid="uid://duw50or1bnuh3"]
+
+[ext_resource type="Script" uid="uid://noq38udyb38q" path="res://FallingTile.gd" id="1_idn42"]
+[ext_resource type="Texture2D" uid="uid://ds51jbthafinv" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_22nhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujlyf"]
+size = Vector2(10, 10)
 
 [node name="FallingTile" type="Area2D"]
+script = ExtResource("1_idn42")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_22nhd")
+region_enabled = true
+region_rect = Rect2(32, 32, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ujlyf")

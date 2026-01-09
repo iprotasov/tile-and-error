@@ -1,14 +1,174 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5br1siyspq7r"]
+[gd_scene load_steps=17 format=3 uid="uid://c5br1siyspq7r"]
+
+[ext_resource type="Script" uid="uid://bcwhn876bckay" path="res://Player.gd" id="1_cxr5p"]
+[ext_resource type="Texture2D" uid="uid://cpuxt3k24ew60" path="res://2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest2/v1/priest2_v1_1.png" id="1_e80uo"]
+[ext_resource type="Texture2D" uid="uid://c3mki7gkixo06" path="res://2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest2/v1/priest2_v1_2.png" id="2_cxr5p"]
+[ext_resource type="Script" uid="uid://dok3yaa6ikpvu" path="res://CameraShake.gd" id="3_dtqjt"]
+[ext_resource type="Texture2D" uid="uid://bmdwvr30qle7v" path="res://2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest2/v1/priest2_v1_3.png" id="3_tdg3f"]
+[ext_resource type="Texture2D" uid="uid://uk0cca16413" path="res://2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest2/v1/priest2_v1_4.png" id="4_dtqjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rwas"]
+size = Vector2(16, 16)
+
+[sub_resource type="Gradient" id="Gradient_cxr5p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tdg3f"]
+gradient = SubResource("Gradient_cxr5p")
+width = 3
+height = 3
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_dtqjt"]
+offsets = PackedFloat32Array(0, 0.48175183, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_5ncpa"]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wi0c6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_e80uo")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hp6x6"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_e80uo"), ExtResource("2_cxr5p"), ExtResource("3_tdg3f"), ExtResource("4_dtqjt")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tkgg"]
+_data = {
+&"RESET": SubResource("Animation_wi0c6"),
+&"fall": SubResource("Animation_5ncpa"),
+&"idle": SubResource("Animation_hp6x6")
+}
+
+[sub_resource type="Gradient" id="Gradient_e80uo"]
+colors = PackedColorArray(0, 0, 0, 0.39215687, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cxr5p"]
+gradient = SubResource("Gradient_e80uo")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_cxr5p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e80uo")
+offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0rwas")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+script = ExtResource("3_dtqjt")
+
+[node name="Dust" type="CPUParticles2D" parent="Camera2D"]
+amount = 30
+texture = SubResource("GradientTexture2D_tdg3f")
+lifetime = 4.0
+preprocess = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(160, 90)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.01
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_dtqjt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3tkgg")
+}
+autoplay = "idle"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(1, 0.6)
+texture = SubResource("GradientTexture2D_cxr5p")
